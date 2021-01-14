@@ -3,11 +3,21 @@ const dateFormat = require("../utils/dateFormat");
 
 const PizzaSchema = new Schema(
   {
+    //// we use Mongoose to help enforce any validation rules
+    //// trim option works just like the JavaScript .trim() method
+    //// which removes white space before and after the input string
+    //// With Mongoose's required field, you can actually provide a custom error message
+    //// e.g., required: 'You need to provide a pizza name!',
     pizzaName: {
       type: String,
+      required: true,
+      // required: 'You need to provide a pizza name!',
+      trim: true,
     },
     createdBy: {
       type: String,
+      required: true,
+      trim: true,
     },
     // createdAt: {
     //   type: Date,
@@ -20,6 +30,8 @@ const PizzaSchema = new Schema(
     },
     size: {
       type: String,
+      required: true,
+      enum: ["Personal", "Small", "Medium", "Large", "Extra Large"],
       default: "Large",
     },
     toppings: [],

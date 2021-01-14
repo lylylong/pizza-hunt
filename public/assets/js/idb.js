@@ -17,6 +17,8 @@ const request = indexedDB.open("pizza_hunt", 1);
 //// or if the version number changes
 //
 // this event will emit if the database version changes (nonexistant to version 1, v1 to v2, etc.)
+//// This event only executes when the version of the database has changed
+//// or when no database was detected and needs to be created.
 request.onupgradeneeded = function (event) {
   // save a reference to the database
   const db = event.target.result;
