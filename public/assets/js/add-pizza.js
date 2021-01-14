@@ -64,6 +64,9 @@ const handlePizzaSubmit = (event) => {
     })
     .catch((err) => {
       console.log(err);
+      /// Save Pizza Data to IndexedDB - object store ///
+      saveRecord(formData);
+      /// class added ///
     });
   /// class added ///
 };
